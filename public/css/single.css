@@ -2,7 +2,7 @@ header{
     position: relative;
     background-color: black;
 }
-.videocontainer{
+.imgcontainer{
     max-width: 1280px;
     margin: auto !important;
 }

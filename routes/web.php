@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MovieController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,16 +16,29 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
 
 Route::get('/edit', function () {
-return view('edit');
+    $username = Auth::user()->name;
+return view('edit', [
+    'title' => 'Update',
+    'username' => $username
+]);
 });
 
-Route::get('/add', function () {
-return view('add');
+Route::get('/movie', function () {
+    $username = Auth::user()->name;
+return view('movie', [
+    'title' => 'Movie',
+    'username' => $username
+]);
 });
+
+Route::get('/edit/{back}', function () {
+    return redirect('/dashboard');
+});
+
 // Route::get('/mylist', function () {
 //     return view('mylist', [
 //         'title' => 'My List'
@@ -77,3 +92,16 @@ Route::get('/teman', function () {
         'tahun' => $tahun
     ]);
 });
+
+
+Route::get('/add', [MovieController::class, 'create']);
+Route::post('/add', [MovieController::class, 'store']);
+Route::get('/add', function () {
+    return view('add', [
+        'title' => 'Add'
+    ]);
+    });
+
+
+Route::get('/single/{id}', [MovieController::class, 'show']);
+

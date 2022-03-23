@@ -2,6 +2,25 @@
 <html class="no-js">
 @include('layouts.partials.head')
 <body>
+    <div class="container mt-4" style="display: flex; justify-content: center; align-item:center;">
+        @if (session('success'))
+        <script>
+        alert("{{ session('success') }}");
+        </script>
+        @endif
+
+        @if ($errors->any())
+                <script>
+                @foreach ($errors->all() as $error)
+                alert("{{ $error }}");
+                @endforeach
+                </script>
+            </ul>
+        </div>
+        @endif
+        @yield ('container')
+    </div>
+
     @include('layouts.partials.navbar')
     <main id="mainContainer" class="p-b-40">
         <!-- dashboard/browse page block start | home page after login | -->

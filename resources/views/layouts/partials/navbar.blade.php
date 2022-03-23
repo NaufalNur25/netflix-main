@@ -6,7 +6,7 @@
                 </a>
                 <a href="/dashboard" class="nav-item home active">Home</a>
                 {{-- <a href="/mylist" class="nav-item home active">My List</a> --}}
-                <a href="" class="nav-item">Movies</a>
+                <a href="/movie" class="nav-item">Movies</a>
             </div>
             <div class="righticons d-flex flex-end flex-middle">
                 <div class="dropdown notification">
