@@ -22,7 +22,7 @@
     <main style="padding: 0px 10px;">
         <header class="d-flex space-between middle-align">
            <a href="/">
-            <img src="/images/logo.png" height="50px" width="170px" alt="site logo main" style="margin: auto;"></img>
+            <img src="/images/fourflix-logo.png" height="50px" width="170px" alt="site logo main" style="margin: auto;"></img>
         </a>
         </header>
         <section id="login-form-section">
@@ -44,7 +44,7 @@
                             Sign In
                         </button>
                         <p class="signUpText para">
-                            New to Netflix? <span class="signUp"><a href="register">Sign up Now</a></span>
+                            New to Fourflix? <span class="signUp"><a href="register">Sign up Now</a></span>
                         </p>
                     </form>
                 </div>

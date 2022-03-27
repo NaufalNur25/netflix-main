@@ -15,11 +15,13 @@ return new class extends Migration
     {
         Schema::create('movies', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id');
             $table->string('m_title');
             $table->string('m_publis');
+            $table->integer('m_release');
             $table->string('m_desc');
-            $table->string('m_tag');
             $table->tinyInteger('m_rate');
+            $table->integer('m_age');
             $table->integer('m_time');
             $table->string('filename');
             $table->timestamps();

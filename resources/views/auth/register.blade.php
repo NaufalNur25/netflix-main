@@ -21,7 +21,7 @@
     <main style="padding: 0px 10px;">
         <header class="d-flex space-between middle-align">
             <a href="/">
-                <img src="/images/logo.png" height="50px" width="170px" alt="site logo main"></img>
+                <img src="/images/fourflix-logo.png" height="50px" width="170px" alt="site logo main"></img>
             </a>
         </header>
         <section id="login-form-section">

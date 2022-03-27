@@ -13,5 +13,6 @@
 
 @include('layouts.partials.head')
 @include('layouts.partials.navbar')
+@include('layouts.partials.popup')
 
 @extends('layouts.movieout')

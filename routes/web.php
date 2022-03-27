@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Movie;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MovieController;
 
@@ -15,29 +17,14 @@ use App\Http\Controllers\MovieController;
 |
 */
 
-Route::get('/', function () {
-    return redirect('/login');
+require __DIR__.'/auth.php';
+
+
+Route::get('', function () {
+    return redirect('/app/home');
 });
 
-Route::get('/edit', function () {
-    $username = Auth::user()->name;
-return view('edit', [
-    'title' => 'Update',
-    'username' => $username
-]);
-});
-
-Route::get('/movie', function () {
-    $username = Auth::user()->name;
-return view('movie', [
-    'title' => 'Movie',
-    'username' => $username
-]);
-});
-
-Route::get('/edit/{back}', function () {
-    return redirect('/dashboard');
-});
+Route::get('/app/{title}', [MovieController::class, 'index'])->middleware(['auth']);
 
 // Route::get('/mylist', function () {
 //     return view('mylist', [
@@ -45,63 +32,14 @@ Route::get('/edit/{back}', function () {
 //     ]);
 // });
 
-Route::get('/profile', function () {
-    $email = Auth::user()->email;
-    $username = Auth::user()->name;
-
-
-    return view('profile',[
-        'title' => 'Setting',
-        'email' => $email,
-        'username' => $username
-    ]);
-});
-
-Route::get('/dashboard', function () {
-    $username = Auth::user()->name;
-    return view('home', [
-        'title' => 'Home',
-           'username' => $username
-    ]);
-})->middleware(['auth'])->name('home');
-
-require __DIR__.'/auth.php';
-
-Route::get('/nama', function () {
-    return view('nama', [
-        'title' => 'nama',
-        'nama' => 'Naufal Nur Hafizh'
-    ]);
-});
-
-Route::get('/kelas', function () {
-    return view('kelas', [
-        'title' => 'kelas',
-        'kelas' => 'XI RPL I'
-    ]);
-});
-
-Route::get('/teman', function () {
-    $teman = array('Junde', 'Ahmade' ,'Syahrul');
-    $nis = array('20211158', '20255548', '2033326');
-    $tahun = array('17', '18', '17');
-
-    return view('teman', [
-        'teman' => $teman,
-        'nis' => $nis,
-        'tahun' => $tahun
-    ]);
-});
-
+Route::get('/app/movie/{id}', [MovieController::class, 'show']);
 
 Route::get('/add', [MovieController::class, 'create']);
-Route::post('/add', [MovieController::class, 'store']);
-Route::get('/add', function () {
-    return view('add', [
-        'title' => 'Add'
-    ]);
-    });
+Route::put('/app/{title}', [MovieController::class, 'store']);
 
+Route::get('/edit/{id}', [MovieController::class, 'edit']);
+Route::put('/edit/{id}', [MovieController::class, 'update']);
 
-Route::get('/single/{id}', [MovieController::class, 'show']);
+Route::delete('/app/{title}/{id}', [MovieController::class, 'destroy']);
+
 

@@ -12,4 +12,14 @@ class Movie extends Model
     protected $guarded = [
         'id'
     ];
+
+        /**
+         * Get the user that owns the Movie
+         *
+         * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+         */
+        public function category()
+        {
+            return $this->belongsTo(Category::class);
+        }
 }
